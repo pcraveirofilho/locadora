@@ -1,0 +1,126 @@
+/* criando tabela users */
+CREATE TABLE users (
+  username      VARCHAR(128) NOT NULL PRIMARY KEY,
+  email         VARCHAR(128) NOT NULL,
+  password      VARCHAR(128) NOT NULL,  
+  role          INTEGER NOT NULL,       
+  first_name    VARCHAR(128),
+  last_name     VARCHAR(128)
+);
+ 
+ 
+/* inserindo primeiro usuário */
+INSERT INTO users VALUES ('admin', 'admin@example.com', 'demo', 1, 'Qiang', 'Xue');
+
+
+/* Clientes */
+
+CREATE TABLE IF NOT EXISTS `clientes` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `data` date NOT NULL,
+  `nome` varchar(200) NOT NULL,
+  `nome_mae` varchar(200) NOT NULL,
+  `sexo` varchar(1) NOT NULL,
+  `nascimento` date NOT NULL,
+  `cpf` varchar(11),  
+  `rg` varchar(45),  
+  `habilitacao` varchar(30),  
+  `endereco` varchar(200) NOT NULL,
+  `bairro` varchar(100) NOT NULL,
+  `cidade` varchar(100) NOT NULL,
+  `estado` varchar(2) NOT NULL,
+  `cep` varchar(10) NOT NULL,
+  `pais` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `email_alternativo` varchar(200),
+  `tel_residencial` varchar(30),
+  `tel_celular` varchar(30),
+  `tel_trabalho` varchar(30),
+  `listanegra` varchar(1),
+  `obs` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+
+/* Veiculos */
+
+CREATE TABLE IF NOT EXISTS `veiculos` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id_categoria` int(10) NOT NULL,
+  `data_aquisicao` date,
+  `data_ult_manutencao` date,
+  `data_prox_manutencao` date,
+  `placa` varchar(10) NOT NULL,
+  `renavan` varchar(40) NOT NULL,
+  `chassi` varchar(40) NOT NULL,
+  `ano` date NOT NULL,
+  `fabricante` varchar(11) NOT NULL,  
+  `modelo` varchar(11) NOT NULL,  
+  `cor` varchar(30) NOT NULL,  
+  `alugado` varchar(1),  
+  `reservado` varchar(1),  
+  `manutencao` varchar(1),  
+  `acessorios` text,
+  `obs` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+/* Categoria de Veiculos */
+
+CREATE TABLE IF NOT EXISTS `cat_veiculos` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `descricao` varcgar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+
+/* Fatura */
+CREATE TABLE IF NOT EXISTS `fatura` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id_cliente` int(10) NOT NULL,
+  `id_veiculo` int(10) NOT NULL,
+  `data` date,
+  `obs` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+/* Composicao das Faturas */
+
+CREATE TABLE IF NOT EXISTS `faturas_comp` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id_fatura` int(10) NOT NULL,
+  `id_tipo_pgto` int(10) NOT NULL,
+  `data` date,
+  `data_vencimento` date,
+  `data_pgto` date,
+  `valor` decimal(10,2),
+  `valor_juros` decimal(10,2),
+  `valor_total` decimal(10,2),
+  `obs` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+
+/* Tipo de Pagamentos */
+CREATE TABLE IF NOT EXISTS `tipo_pgto` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `descricao` varcgar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+
+/* Orcamentos */
+
+
+
+/* Reserva */
+
+/* Retirada */
+
+/* Retirada para Serviço */
+
+/* Serviços Realizados */
+
+
+
+
